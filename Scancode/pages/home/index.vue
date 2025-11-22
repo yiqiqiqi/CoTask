@@ -11,15 +11,15 @@
 		<!-- 快速统计 -->
 		<view class="stats-cards">
 			<view class="stat-card">
-				<text class="stat-value">0</text>
+				<text class="stat-value">{{ stats.total }}</text>
 				<text class="stat-label">总项目</text>
 			</view>
 			<view class="stat-card">
-				<text class="stat-value">0</text>
+				<text class="stat-value">{{ stats.inProgress }}</text>
 				<text class="stat-label">进行中</text>
 			</view>
 			<view class="stat-card">
-				<text class="stat-value">0</text>
+				<text class="stat-value">{{ stats.completed }}</text>
 				<text class="stat-label">已完成</text>
 			</view>
 		</view>
@@ -31,9 +31,13 @@
 				<button class="add-btn" @click="createProject">+ 新建项目</button>
 			</view>
 
-			<view class="empty-state" v-if="projects.length === 0">
+			<view class="empty-state" v-if="projects.length === 0 && !loading">
 				<text class="empty-text">暂无项目</text>
 				<text class="empty-hint">点击"新建项目"开始创建</text>
+			</view>
+
+			<view class="loading-state" v-if="loading">
+				<text class="loading-text">加载中...</text>
 			</view>
 
 			<view class="project-list" v-else>
@@ -69,7 +73,13 @@ export default {
 		return {
 			currentDepartment: {},
 			themeColor: '#1890FF',
-			projects: []
+			projects: [],
+			stats: {
+				total: 0,
+				inProgress: 0,
+				completed: 0
+			},
+			loading: false
 		}
 	},
 	onLoad() {
@@ -98,8 +108,44 @@ export default {
 			}
 		},
 		async loadProjects() {
-			// TODO: 调用云函数获取项目列表
-			this.projects = []
+			if (!this.currentDepartment.id) {
+				return
+			}
+
+			this.loading = true
+
+			try {
+				const res = await uniCloud.callFunction({
+					name: 'get_projects',
+					data: {
+						department_id: this.currentDepartment.id,
+						page: 1,
+						pageSize: 100
+					}
+				})
+
+				if (res.result.code === 200) {
+					this.projects = res.result.data.list
+
+					// 计算统计数据
+					this.stats.total = this.projects.length
+					this.stats.inProgress = this.projects.filter(p => p.status === 1).length
+					this.stats.completed = this.projects.filter(p => p.status === 2).length
+				} else {
+					uni.showToast({
+						title: res.result.message || '加载失败',
+						icon: 'none'
+					})
+				}
+			} catch (error) {
+				console.error('加载项目列表失败:', error)
+				uni.showToast({
+					title: '加载失败',
+					icon: 'none'
+				})
+			} finally {
+				this.loading = false
+			}
 		},
 		changeDepartment() {
 			uni.navigateTo({
@@ -107,14 +153,13 @@ export default {
 			})
 		},
 		createProject() {
-			uni.showToast({
-				title: '创建项目功能开发中',
-				icon: 'none'
+			uni.navigateTo({
+				url: '/pages/project/form'
 			})
 		},
 		goToProject(project) {
 			uni.navigateTo({
-				url: '/pages/project/detail?id=' + project.id
+				url: '/pages/project/detail?id=' + project._id
 			})
 		},
 		getStatusText(status) {
@@ -224,6 +269,16 @@ export default {
 			display: block;
 			font-size: 14px;
 			color: #CCCCCC;
+		}
+	}
+
+	.loading-state {
+		text-align: center;
+		padding: 60px 20px;
+
+		.loading-text {
+			font-size: 14px;
+			color: #999999;
 		}
 	}
 
