@@ -54,6 +54,11 @@
 				<button class="action-btn" @click="editTask">编辑任务</button>
 				<button class="action-btn primary" @click="updateProgress">更新进度</button>
 			</view>
+
+			<!-- 更多操作 -->
+			<view class="more-actions">
+				<button class="delete-btn" @click="deleteTask">删除任务</button>
+			</view>
 		</view>
 
 		<!-- 进度历史 -->
@@ -199,6 +204,55 @@ export default {
 				3: '高'
 			}
 			return map[priority] || '中'
+		},
+		deleteTask() {
+			uni.showModal({
+				title: '确认删除',
+				content: `确定要删除任务"${this.task.name}"吗？\n\n此操作将同时删除所有进度记录，且不可恢复！`,
+				confirmText: '确认删除',
+				confirmColor: '#f5222d',
+				success: async (res) => {
+					if (res.confirm) {
+						await this.performDelete()
+					}
+				}
+			})
+		},
+		async performDelete() {
+			uni.showLoading({ title: '删除中...' })
+
+			try {
+				const res = await uniCloud.callFunction({
+					name: 'delete_task',
+					data: {
+						task_id: this.taskId
+					}
+				})
+
+				if (res.result.code === 200) {
+					uni.showToast({
+						title: '删除成功',
+						icon: 'success'
+					})
+
+					setTimeout(() => {
+						uni.navigateBack()
+					}, 1500)
+				} else {
+					uni.showToast({
+						title: res.result.message || '删除失败',
+						icon: 'none'
+					})
+				}
+			} catch (error) {
+				console.error('删除任务失败:', error)
+				uni.showToast({
+					title: '删除失败',
+					icon: 'none'
+				})
+			} finally {
+				uni.hideLoading()
+			}
 		}
 	}
 }
@@ -348,6 +402,20 @@ export default {
 				background: #1890FF;
 				color: #FFFFFF;
 			}
+		}
+	}
+
+	.more-actions {
+		margin-top: 12px;
+
+		.delete-btn {
+			width: 100%;
+			height: 40px;
+			background: #FFFFFF;
+			color: #f5222d;
+			border: 1px solid #f5222d;
+			border-radius: 8px;
+			font-size: 14px;
 		}
 	}
 }
