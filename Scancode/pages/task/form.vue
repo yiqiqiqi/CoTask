@@ -175,17 +175,55 @@ export default {
 			uni.showLoading({ title: '加载中...' })
 
 			try {
-				// 从项目详情的任务列表中获取
-				// 这里简化处理，实际可以创建单独的get_task_detail云函数
-				uni.showToast({
-					title: '编辑功能开发中',
-					icon: 'none'
+				const res = await uniCloud.callFunction({
+					name: 'get_task_detail',
+					data: {
+						task_id: this.taskId
+					}
 				})
+
+				if (res.result.code === 200) {
+					const task = res.result.data.task
+
+					// 填充表单数据
+					this.formData = {
+						name: task.name || '',
+						description: task.description || '',
+						owner: task.owner || '',
+						priority: task.priority || 2,
+						start_time: task.start_time ? this.formatDate(task.start_time) : '',
+						due_time: task.due_time ? this.formatDate(task.due_time) : '',
+						status: task.status || 0,
+						progress: task.progress || 0
+					}
+
+					// 保存项目ID
+					if (task.project_id) {
+						this.projectId = task.project_id
+					}
+				} else {
+					uni.showToast({
+						title: res.result.message,
+						icon: 'none'
+					})
+					setTimeout(() => {
+						uni.navigateBack()
+					}, 1500)
+				}
 			} catch (error) {
 				console.error('加载任务数据失败:', error)
+				uni.showToast({
+					title: '加载失败',
+					icon: 'none'
+				})
 			} finally {
 				uni.hideLoading()
 			}
+		},
+		formatDate(date) {
+			if (!date) return ''
+			const d = new Date(date)
+			return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 		},
 		onStartTimeChange(e) {
 			this.formData.start_time = e.detail.value

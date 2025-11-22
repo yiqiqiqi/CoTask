@@ -99,15 +99,69 @@ export default {
 	onLoad(options) {
 		this.taskId = options.id
 		this.loadTaskDetail()
+		this.loadProgressRecords()
 	},
 	methods: {
 		async loadTaskDetail() {
-			// 这里简化处理，实际应该创建 get_task_detail 云函数
-			// 目前从本地或通过项目详情获取
-			uni.showToast({
-				title: '功能开发中',
-				icon: 'none'
-			})
+			if (!this.taskId) {
+				uni.showToast({
+					title: '任务ID不存在',
+					icon: 'none'
+				})
+				setTimeout(() => {
+					uni.navigateBack()
+				}, 1500)
+				return
+			}
+
+			uni.showLoading({ title: '加载中...' })
+
+			try {
+				const res = await uniCloud.callFunction({
+					name: 'get_task_detail',
+					data: {
+						task_id: this.taskId
+					}
+				})
+
+				if (res.result.code === 200) {
+					this.task = res.result.data.task
+				} else {
+					uni.showToast({
+						title: res.result.message,
+						icon: 'none'
+					})
+				}
+			} catch (error) {
+				console.error('加载任务详情失败:', error)
+				uni.showToast({
+					title: '加载失败',
+					icon: 'none'
+				})
+			} finally {
+				uni.hideLoading()
+			}
+		},
+		async loadProgressRecords() {
+			if (!this.taskId) return
+
+			try {
+				const res = await uniCloud.callFunction({
+					name: 'get_progress_records',
+					data: {
+						target_type: 'task',
+						target_id: this.taskId,
+						page: 1,
+						pageSize: 50
+					}
+				})
+
+				if (res.result.code === 200) {
+					this.progressRecords = res.result.data.list
+				}
+			} catch (error) {
+				console.error('加载进度记录失败:', error)
+			}
 		},
 		editTask() {
 			uni.navigateTo({
