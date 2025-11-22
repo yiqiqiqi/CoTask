@@ -106,6 +106,13 @@ export default {
 		this.loadTaskDetail()
 		this.loadProgressRecords()
 	},
+	onShow() {
+		// 从其他页面返回时重新加载数据
+		if (this.taskId) {
+			this.loadTaskDetail()
+			this.loadProgressRecords()
+		}
+	},
 	methods: {
 		async loadTaskDetail() {
 			if (!this.taskId) {
