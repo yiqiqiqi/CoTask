@@ -80,6 +80,15 @@
 						"navigationBarTextStyle": "black",
 						"enablePullDownRefresh": false
 					}
+				},
+				{
+					"path": "form",
+					"style": {
+						"navigationBarTitleText": "任务",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
 				}
 			]
 		},
