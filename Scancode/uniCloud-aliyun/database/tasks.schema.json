@@ -1,0 +1,72 @@
+{
+  "collection": "tasks",
+  "fields": {
+    "project_id": {
+      "type": "String",
+      "description": "所属项目ID",
+      "required": true
+    },
+    "name": {
+      "type": "String",
+      "description": "任务名称",
+      "required": true
+    },
+    "description": {
+      "type": "String",
+      "description": "任务描述"
+    },
+    "owner": {
+      "type": "String",
+      "description": "负责人"
+    },
+    "owner_id": {
+      "type": "String",
+      "description": "负责人ID"
+    },
+    "status": {
+      "type": "Int",
+      "description": "任务状态: 0=待开始 1=进行中 2=已完成 3=延期",
+      "default": 0
+    },
+    "progress": {
+      "type": "Int",
+      "description": "完成度百分比(0-100)",
+      "default": 0
+    },
+    "priority": {
+      "type": "Int",
+      "description": "优先级: 1=低 2=中 3=高",
+      "default": 2
+    },
+    "start_time": {
+      "type": "Date",
+      "description": "开始时间"
+    },
+    "due_time": {
+      "type": "Date",
+      "description": "截止时间"
+    },
+    "complete_time": {
+      "type": "Date",
+      "description": "实际完成时间"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    },
+    "update_time": {
+      "type": "Date",
+      "description": "更新时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "project_index",
+      "fields": ["project_id"]
+    },
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    }
+  ]
+}

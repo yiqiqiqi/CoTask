@@ -1,0 +1,72 @@
+{
+  "collection": "projects",
+  "fields": {
+    "department_id": {
+      "type": "String",
+      "description": "所属部门ID",
+      "required": true
+    },
+    "name": {
+      "type": "String",
+      "description": "项目名称",
+      "required": true
+    },
+    "description": {
+      "type": "String",
+      "description": "项目描述"
+    },
+    "owner": {
+      "type": "String",
+      "description": "负责人"
+    },
+    "owner_id": {
+      "type": "String",
+      "description": "负责人ID"
+    },
+    "status": {
+      "type": "Int",
+      "description": "项目状态: 0=未开始 1=进行中 2=已完成 3=已暂停",
+      "default": 0
+    },
+    "progress": {
+      "type": "Int",
+      "description": "整体进度百分比(0-100)",
+      "default": 0
+    },
+    "start_time": {
+      "type": "Date",
+      "description": "开始时间"
+    },
+    "end_time": {
+      "type": "Date",
+      "description": "预计完成时间"
+    },
+    "actual_end_time": {
+      "type": "Date",
+      "description": "实际完成时间"
+    },
+    "priority": {
+      "type": "Int",
+      "description": "优先级: 1=低 2=中 3=高",
+      "default": 2
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    },
+    "update_time": {
+      "type": "Date",
+      "description": "更新时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "department_index",
+      "fields": ["department_id"]
+    },
+    {
+      "name": "status_index",
+      "fields": ["status"]
+    }
+  ]
+}

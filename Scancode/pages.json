@@ -1,41 +1,134 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/login/index",
 			"style": {
-				"navigationBarTitleText": "首页",
+				"navigationBarTitleText": "登录",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path": "pages/about/index",
+			"path": "pages/department/select",
 			"style": {
-				"navigationBarTitleText": "关于我们",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "选择部门",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path": "pages/business/index",
+			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "核心业务",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "项目看板",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
-			"path": "pages/contact/index",
+			"path": "pages/stats/index",
 			"style": {
-				"navigationBarTitleText": "联系我们",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "统计分析",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
+	"subPackages": [
+		{
+			"root": "pages/project",
+			"pages": [
+				{
+					"path": "detail",
+					"style": {
+						"navigationBarTitleText": "项目详情",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/task",
+			"pages": [
+				{
+					"path": "detail",
+					"style": {
+						"navigationBarTitleText": "任务详情",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/progress",
+			"pages": [
+				{
+					"path": "update",
+					"style": {
+						"navigationBarTitleText": "更新进度",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/admin",
+			"pages": [
+				{
+					"path": "members",
+					"style": {
+						"navigationBarTitleText": "成员管理",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		}
+	],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#1890FF",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/home/index",
+				"text": "项目"
+			},
+			{
+				"pagePath": "pages/stats/index",
+				"text": "统计"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"text": "我的"
+			}
+		]
+	},
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "EEnous Technology",
-		"navigationBarBackgroundColor": "#000000",
-		"backgroundColor": "#000000",
-		"backgroundTextStyle": "light"
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "CoTask",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F5F5F5",
+		"backgroundTextStyle": "dark"
 	},
 	"uniIdRouter": {}
 }

@@ -15,10 +15,27 @@
 /* 颜色变量 */
 
 /* 行为相关颜色 */
-$uni-color-primary: #007aff;
-$uni-color-success: #4cd964;
-$uni-color-warning: #f0ad4e;
-$uni-color-error: #dd524d;
+$uni-color-primary: #1890FF;
+$uni-color-success: #52c41a;
+$uni-color-warning: #faad14;
+$uni-color-error: #f5222d;
+
+/* CoTask 主题色 */
+// 部门主题色
+$theme-rd-blue: #1890FF; // 研发部门 - 科技蓝
+$theme-op-orange: #FF6B35; // 运营部门 - 活力橙
+
+// 项目/任务状态色
+$status-not-start: #d9d9d9; // 未开始 - 灰色
+$status-in-progress: #1890FF; // 进行中 - 蓝色
+$status-completed: #52c41a; // 已完成 - 绿色
+$status-delayed: #f5222d; // 延期 - 红色
+$status-paused: #faad14; // 已暂停 - 橙色
+
+// 优先级颜色
+$priority-low: #52c41a; // 低优先级 - 绿色
+$priority-medium: #1890FF; // 中优先级 - 蓝色
+$priority-high: #f5222d; // 高优先级 - 红色
 
 /* 文字基本颜色 */
 $uni-text-color:#333;//基本色
@@ -80,4 +97,40 @@ $uni-font-size-paragraph:15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@mixin text-ellipsis-multi($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+/* CoTask 自定义样式 */
+// 卡片样式
+@mixin card-style {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+}
+
+// 按钮样式
+@mixin button-primary {
+  background: $uni-color-primary;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+// 标签样式
+@mixin tag-style($bg-color, $text-color) {
+  background: $bg-color;
+  color: $text-color;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: inline-block;
 }
