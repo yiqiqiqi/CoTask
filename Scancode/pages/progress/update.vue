@@ -76,6 +76,7 @@ export default {
 			taskId: '',
 			projectId: '',
 			targetType: 'task', // task 或 project
+			targetName: '',
 			formData: {
 				progress: 0,
 				content: ''
@@ -89,8 +90,43 @@ export default {
 		this.taskId = options.task_id || ''
 		this.projectId = options.project_id || ''
 		this.targetType = this.taskId ? 'task' : 'project'
+
+		// 加载当前进度
+		this.loadCurrentProgress()
 	},
 	methods: {
+		async loadCurrentProgress() {
+			const targetId = this.taskId || this.projectId
+			if (!targetId) return
+
+			try {
+				const functionName = this.targetType === 'task' ? 'get_task_detail' : 'get_project_detail'
+				const paramName = this.targetType === 'task' ? 'task_id' : 'project_id'
+
+				const res = await uniCloud.callFunction({
+					name: functionName,
+					data: {
+						[paramName]: targetId
+					}
+				})
+
+				if (res.result.code === 200) {
+					const target = this.targetType === 'task'
+						? res.result.data.task
+						: res.result.data.project
+
+					this.formData.progress = target.progress || 0
+					this.targetName = target.name || ''
+
+					// 设置页面标题
+					uni.setNavigationBarTitle({
+						title: `更新进度 - ${this.targetName}`
+					})
+				}
+			} catch (error) {
+				console.error('加载当前进度失败:', error)
+			}
+		},
 		onProgressChange(e) {
 			this.formData.progress = e.detail.value
 		},
