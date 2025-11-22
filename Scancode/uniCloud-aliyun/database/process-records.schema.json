@@ -1,0 +1,30 @@
+{
+  "collection": "process-records",
+  "fields": {
+    "deviceId": {
+      "type": "String",
+      "description": "设备编号"
+    },
+    "processName": {
+      "type": "String",
+      "description": "工序名称"
+    },
+    "inspector": {
+      "type": "String",
+      "description": "检测人员"
+    },
+    "inspectTime": {
+      "type": "String",
+      "description": "检测时间"
+    },
+    "inspectResult": {
+      "type": "String",
+      "description": "检验结果"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "数据创建时间"
+    }
+  },
+  "indexes": []
+} 

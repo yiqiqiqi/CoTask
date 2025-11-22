@@ -1,0 +1,16 @@
+{
+  "permission": {
+    "process-records": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
+    },
+    "image-index": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
+    },
+    "file-records": {
+      "read": true,
+      "write": true
+    }
+  }
+} 

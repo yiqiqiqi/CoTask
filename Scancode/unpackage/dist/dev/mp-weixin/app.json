@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/index",
+    "pages/business/index",
+    "pages/contact/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "EEnous Technology",
+    "navigationBarBackgroundColor": "#000000",
+    "backgroundColor": "#000000",
+    "backgroundTextStyle": "light"
+  },
+  "permission": {},
+  "usingComponents": {}
+}

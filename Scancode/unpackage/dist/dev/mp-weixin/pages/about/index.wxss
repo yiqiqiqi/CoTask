@@ -1,0 +1,367 @@
+:host{display:flex;flex-direction:column}
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* 常用混合样式 */
+.about-page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  position: relative;
+}
+.about-page .custom-navbar {
+  height: 88rpx;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.about-page .custom-navbar .nav-back {
+  display: flex;
+  align-items: center;
+  color: #3a8bcd;
+  font-size: 28rpx;
+}
+.about-page .custom-navbar .nav-back .back-icon {
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+.about-page .custom-navbar .nav-title {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.about-page .custom-navbar .nav-placeholder {
+  width: 120rpx;
+}
+.about-page .content-scroll {
+  height: calc(100vh - 88rpx);
+}
+.about-page .content-scroll .container {
+  max-width: 1200rpx;
+  margin: 0 auto;
+  padding: 0 30rpx;
+}
+.about-page .content-scroll .company-intro {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.about-page .content-scroll .company-intro .intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(147, 197, 253, 0.06) 0%, transparent 50%);
+  z-index: 1;
+}
+.about-page .content-scroll .company-intro .intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.about-page .content-scroll .company-intro .intro-content .company-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  margin-bottom: 40rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-badge .badge-icon {
+  font-size: 24rpx;
+  margin-right: 10rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-badge .badge-text {
+  color: #3a8bcd;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.about-page .content-scroll .company-intro .intro-content .company-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-title .title-line {
+  font-size: 48rpx;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-title .title-highlight {
+  font-size: 36rpx;
+  background: linear-gradient(135deg, #3a8bcd 0%, #93c5fd 50%, #3a8bcd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+.about-page .content-scroll .company-intro .intro-content .title-divider {
+  width: 60rpx;
+  height: 3rpx;
+  background: linear-gradient(90deg, #3a8bcd 0%, #93c5fd 50%, #3a8bcd 100%);
+  margin: 20rpx auto 30rpx;
+  border-radius: 2rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  line-height: 1.6;
+  max-width: 800rpx;
+  margin: 0 auto 50rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .company-description .text-highlight {
+  background: linear-gradient(135deg, #3a8bcd 0%, #93c5fd 50%, #3a8bcd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+.about-page .content-scroll .company-intro .intro-content .tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30rpx;
+  max-width: 600rpx;
+  margin: 0 auto;
+}
+.about-page .content-scroll .company-intro .intro-content .tech-grid .tech-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .tech-grid .tech-item .tech-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.about-page .content-scroll .company-intro .intro-content .tech-grid .tech-item .tech-name {
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+.about-page .content-scroll .company-intro .company-visual {
+  position: relative;
+  z-index: 2;
+  margin-top: 80rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  padding: 40rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-decoration {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  border: 2px solid #3a8bcd;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-decoration.top-left {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 10rpx 0 0 0;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-decoration.top-right {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 10rpx 0 0;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-decoration.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 10rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-decoration.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 10rpx 0;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .image-container {
+  position: relative;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .image-container .company-image {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 15rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .image-container .image-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .image-container .image-effects .scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, #3a8bcd, transparent);
+  animation: scan 3s linear infinite;
+}
+@keyframes scan {
+0% {
+    top: 0;
+}
+100% {
+    top: 100%;
+}
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info {
+  margin-top: 40rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info .info-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12rpx;
+  padding: 30rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info .info-panel .panel-title {
+  color: #3a8bcd;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info .info-panel .panel-data .data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info .info-panel .panel-data .data-row .data-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24rpx;
+}
+.about-page .content-scroll .company-intro .company-visual .visual-frame .frame-info .info-panel .panel-data .data-row .data-value {
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+.about-page .content-scroll .timeline-section {
+  padding: 100rpx 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+.about-page .content-scroll .timeline-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80rpx;
+}
+.about-page .content-scroll .timeline-section .section-header .section-line {
+  width: 80rpx;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, #3a8bcd, transparent);
+  margin: 0 30rpx;
+}
+.about-page .content-scroll .timeline-section .section-header .section-title {
+  font-size: 36rpx;
+  color: #ffffff;
+  font-weight: 600;
+}
+.about-page .content-scroll .timeline-section .timeline {
+  position: relative;
+  max-width: 800rpx;
+  margin: 0 auto;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 60rpx;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-dot {
+  width: 20rpx;
+  height: 20rpx;
+  background: #3a8bcd;
+  border-radius: 50%;
+  margin-right: 40rpx;
+  position: relative;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid #3a8bcd;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-content {
+  flex: 1;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-content .timeline-year {
+  color: #3a8bcd;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-content .timeline-title {
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.about-page .content-scroll .timeline-section .timeline .timeline-item .timeline-content .timeline-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24rpx;
+  line-height: 1.5;
+}

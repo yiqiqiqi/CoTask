@@ -1,0 +1,21 @@
+{
+  "bsonType": "object",
+  "required": ["name", "createTime"],
+  "properties": {
+    "name": {
+      "bsonType": "string",
+      "title": "文件名",
+      "maxLength": 200
+    },
+    "createTime": {
+      "bsonType": "timestamp",
+      "title": "创建时间"
+    },
+    "status": {
+      "bsonType": "int",
+      "title": "文件状态",
+      "enum": [0, 1, 2],
+      "defaultValue": 0
+    }
+  }
+} 

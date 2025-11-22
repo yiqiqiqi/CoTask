@@ -1,0 +1,27 @@
+{
+  "collection": "image-index",
+  "fields": {
+    "deviceId": {
+      "type": "String",
+      "description": "关联设备编号"
+    },
+    "processName": {
+      "type": "String",
+      "description": "关联工序名称"
+    },
+    "fileID": {
+      "type": "String",
+      "description": "云存储文件ID"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "device_index",
+      "fields": ["deviceId"]
+    }
+  ]
+} 
