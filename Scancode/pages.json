@@ -32,7 +32,7 @@
 				"navigationBarTitleText": "统计分析",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -76,6 +76,15 @@
 					"path": "detail",
 					"style": {
 						"navigationBarTitleText": "任务详情",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "form",
+					"style": {
+						"navigationBarTitleText": "任务",
 						"navigationBarBackgroundColor": "#FFFFFF",
 						"navigationBarTextStyle": "black",
 						"enablePullDownRefresh": false

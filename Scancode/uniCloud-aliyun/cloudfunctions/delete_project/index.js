@@ -25,6 +25,32 @@ exports.main = async (event, context) => {
 			};
 		}
 
+		// 获取所有任务ID，用于删除任务相关的进度记录
+		const tasksResult = await db.collection('tasks')
+			.where({ project_id })
+			.field({ _id: true })
+			.get();
+
+		const taskIds = tasksResult.data.map(task => task._id);
+
+		// 删除所有任务相关的进度记录
+		if (taskIds.length > 0) {
+			await db.collection('progress_records')
+				.where({
+					target_type: 'task',
+					target_id: db.command.in(taskIds)
+				})
+				.remove();
+
+			// 删除所有任务相关的图片索引
+			await db.collection('image_index')
+				.where({
+					target_type: 'task',
+					target_id: db.command.in(taskIds)
+				})
+				.remove();
+		}
+
 		// 删除项目相关的所有任务
 		await db.collection('tasks')
 			.where({ project_id })
