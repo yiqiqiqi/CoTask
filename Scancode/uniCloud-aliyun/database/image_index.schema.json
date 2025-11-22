@@ -1,0 +1,42 @@
+{
+  "collection": "image_index",
+  "fields": {
+    "target_type": {
+      "type": "String",
+      "description": "关联类型: project=项目, task=任务, progress=进度记录",
+      "required": true
+    },
+    "target_id": {
+      "type": "String",
+      "description": "关联ID",
+      "required": true
+    },
+    "fileID": {
+      "type": "String",
+      "description": "云存储文件ID",
+      "required": true
+    },
+    "file_name": {
+      "type": "String",
+      "description": "文件名"
+    },
+    "uploader": {
+      "type": "String",
+      "description": "上传人"
+    },
+    "uploader_id": {
+      "type": "String",
+      "description": "上传人ID"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "target_index",
+      "fields": ["target_id"]
+    }
+  ]
+}

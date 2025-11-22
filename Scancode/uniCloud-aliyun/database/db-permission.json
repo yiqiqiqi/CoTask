@@ -1,16 +1,28 @@
 {
   "permission": {
-    "process-records": {
-      "read": "auth.uid != null",
-      "write": "auth.uid != null"
-    },
-    "image-index": {
-      "read": "auth.uid != null",
-      "write": "auth.uid != null"
-    },
-    "file-records": {
+    "departments": {
       "read": true,
-      "write": true
+      "write": "auth.uid != null && auth.role == 'admin'"
+    },
+    "projects": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
+    },
+    "tasks": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
+    },
+    "progress_records": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
+    },
+    "users": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null && (auth.role == 'admin' || auth.uid == doc._id)"
+    },
+    "image_index": {
+      "read": "auth.uid != null",
+      "write": "auth.uid != null"
     }
   }
-} 
+}

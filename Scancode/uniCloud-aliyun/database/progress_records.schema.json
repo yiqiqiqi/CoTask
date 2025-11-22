@@ -1,0 +1,50 @@
+{
+  "collection": "progress_records",
+  "fields": {
+    "target_type": {
+      "type": "String",
+      "description": "目标类型: project=项目, task=任务",
+      "required": true
+    },
+    "target_id": {
+      "type": "String",
+      "description": "目标ID",
+      "required": true
+    },
+    "progress": {
+      "type": "Int",
+      "description": "更新后的进度(0-100)",
+      "required": true
+    },
+    "content": {
+      "type": "String",
+      "description": "进度说明"
+    },
+    "updater": {
+      "type": "String",
+      "description": "更新人"
+    },
+    "updater_id": {
+      "type": "String",
+      "description": "更新人ID"
+    },
+    "images": {
+      "type": "Array",
+      "description": "图片fileID数组"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "target_index",
+      "fields": ["target_id"]
+    },
+    {
+      "name": "time_index",
+      "fields": ["create_time"]
+    }
+  ]
+}

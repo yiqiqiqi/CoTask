@@ -1,0 +1,42 @@
+{
+  "collection": "users",
+  "fields": {
+    "username": {
+      "type": "String",
+      "description": "用户名",
+      "required": true
+    },
+    "password": {
+      "type": "String",
+      "description": "密码(加密)",
+      "required": true
+    },
+    "name": {
+      "type": "String",
+      "description": "姓名"
+    },
+    "department_id": {
+      "type": "String",
+      "description": "所属部门ID"
+    },
+    "role": {
+      "type": "String",
+      "description": "角色: admin=管理员, member=成员",
+      "default": "member"
+    },
+    "avatar": {
+      "type": "String",
+      "description": "头像URL"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    }
+  },
+  "indexes": [
+    {
+      "name": "username_index",
+      "fields": ["username"]
+    }
+  ]
+}

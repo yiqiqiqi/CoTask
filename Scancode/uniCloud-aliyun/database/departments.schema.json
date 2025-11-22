@@ -1,0 +1,24 @@
+{
+  "collection": "departments",
+  "fields": {
+    "name": {
+      "type": "String",
+      "description": "部门名称",
+      "required": true
+    },
+    "description": {
+      "type": "String",
+      "description": "部门描述"
+    },
+    "theme_color": {
+      "type": "String",
+      "description": "部门主题色",
+      "default": "#1890FF"
+    },
+    "create_time": {
+      "type": "Date",
+      "description": "创建时间"
+    }
+  },
+  "indexes": []
+}
