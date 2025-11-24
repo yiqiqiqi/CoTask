@@ -51,9 +51,9 @@ export default {
 			// 保存选择的部门
 			uni.setStorageSync('currentDepartment', dept)
 
-			// 跳转到首页
+			// 跳转到项目大厅（新的首页）
 			uni.switchTab({
-				url: '/pages/home/index'
+				url: '/pages/public/projects'
 			})
 		}
 	}
