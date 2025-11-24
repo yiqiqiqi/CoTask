@@ -18,6 +18,42 @@
 			}
 		},
 		{
+			"path": "pages/public/projects",
+			"style": {
+				"navigationBarTitleText": "项目大厅",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/my/projects",
+			"style": {
+				"navigationBarTitleText": "我的项目",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/my/tasks",
+			"style": {
+				"navigationBarTitleText": "我的任务",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "项目看板",
@@ -33,15 +69,6 @@
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTextStyle": "black",
 				"enablePullDownRefresh": true
-			}
-		},
-		{
-			"path": "pages/mine/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationBarBackgroundColor": "#FFFFFF",
-				"navigationBarTextStyle": "black",
-				"enablePullDownRefresh": false
 			}
 		}
 	],
@@ -128,12 +155,16 @@
 		"borderStyle": "black",
 		"list": [
 			{
-				"pagePath": "pages/home/index",
-				"text": "项目"
+				"pagePath": "pages/public/projects",
+				"text": "项目大厅"
 			},
 			{
-				"pagePath": "pages/stats/index",
-				"text": "统计"
+				"pagePath": "pages/my/projects",
+				"text": "我的项目"
+			},
+			{
+				"pagePath": "pages/my/tasks",
+				"text": "我的任务"
 			},
 			{
 				"pagePath": "pages/mine/index",
