@@ -13,13 +13,28 @@ exports.main = async (event, context) => {
 	}
 
 	try {
+		// 创建项目时，自动将创建者设为 owner
+		const currentUserId = owner_id || ''
+		const currentUserName = owner || '未知用户'
+
 		// 创建项目
 		const projectData = {
 			name,
 			description: description || '',
 			department_id,
-			owner: owner || '',
-			owner_id: owner_id || '',
+			owner: currentUserName,
+			owner_id: currentUserId,
+
+			// 自动添加创建者为第一个成员（owner角色）
+			members: [
+				{
+					user_id: currentUserId,
+					user_name: currentUserName,
+					role: 'owner',
+					join_time: new Date()
+				}
+			],
+
 			status: 0, // 0=未开始
 			progress: 0,
 			priority: priority || 2, // 默认中优先级

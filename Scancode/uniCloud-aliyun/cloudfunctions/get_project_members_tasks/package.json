@@ -1,0 +1,6 @@
+{
+  "name": "get_project_members_tasks",
+  "version": "1.0.0",
+  "description": "获取项目成员及其任务列表",
+  "main": "index.js"
+}
