@@ -1,0 +1,6 @@
+{
+  "name": "get_my_projects",
+  "version": "1.0.0",
+  "description": "获取我参与的项目",
+  "main": "index.js"
+}

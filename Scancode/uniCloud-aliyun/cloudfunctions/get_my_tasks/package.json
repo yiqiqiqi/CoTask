@@ -1,0 +1,6 @@
+{
+  "name": "get_my_tasks",
+  "version": "1.0.0",
+  "description": "获取我的所有任务（跨项目）",
+  "main": "index.js"
+}
