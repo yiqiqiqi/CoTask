@@ -23,6 +23,18 @@
       "type": "String",
       "description": "负责人ID"
     },
+    "created_by": {
+      "type": "String",
+      "description": "创建者/分配者ID"
+    },
+    "created_by_name": {
+      "type": "String",
+      "description": "创建者/分配者姓名"
+    },
+    "assigned_time": {
+      "type": "Date",
+      "description": "任务分配时间"
+    },
     "status": {
       "type": "Int",
       "description": "任务状态: 0=待开始 1=进行中 2=已完成 3=延期",
@@ -67,6 +79,14 @@
     {
       "name": "status_index",
       "fields": ["status"]
+    },
+    {
+      "name": "owner_index",
+      "fields": ["owner_id"]
+    },
+    {
+      "name": "status_owner_index",
+      "fields": ["status", "owner_id"]
     }
   ]
 }

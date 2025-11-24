@@ -23,6 +23,12 @@
       "type": "String",
       "description": "负责人ID"
     },
+    "members": {
+      "type": "Array",
+      "description": "项目成员列表",
+      "arrayType": "Object",
+      "comment": "成员对象格式: {user_id: String, user_name: String, role: String (owner/member), join_time: Date}"
+    },
     "status": {
       "type": "Int",
       "description": "项目状态: 0=未开始 1=进行中 2=已完成 3=已暂停",
