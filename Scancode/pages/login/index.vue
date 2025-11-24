@@ -50,7 +50,11 @@ export default {
 
 			// TODO: 调用登录云函数
 			// 临时跳过登录，直接进入部门选择
+			// 生成临时用户ID（实际应该从登录接口返回）
+			const tempUserId = 'user_' + Date.now()
+
 			uni.setStorageSync('userInfo', {
+				id: tempUserId,           // 用户ID（新增，必需）
 				username: this.username,
 				name: this.username
 			})
